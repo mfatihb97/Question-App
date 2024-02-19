@@ -169,7 +169,7 @@ function App() {
           <div className="question-section">
             <div className="question-text">{questions[currentQuestion].question}</div>
             <img
-              src={`public/assets/pictures/${questions[currentQuestion].media}`}
+              src={`assets/pictures/${questions[currentQuestion].media}`}
               alt={`Question ${currentQuestion + 1}`}
               className="question-image"
             />
