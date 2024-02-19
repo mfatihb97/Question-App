@@ -147,6 +147,16 @@ function App() {
     }
   };
 
+  const handleRestartQuiz = () => {
+    setQuizStarted(false);
+    setCurrentQuestion(0);
+    setScore(0);
+    setShowScore(false);
+    setTimer(30);
+    setOptionsDisplayed(false);
+    setResultMessage("");
+  };
+
   return (
     <div className="app">
       {!quizStarted ? (
@@ -163,6 +173,8 @@ function App() {
           <div className="result-section">
               <p>{resultMessage}</p>
             </div>
+          <div className="current-question">Şu anki Soru: {currentQuestion + 1}</div>
+          <button onClick={handleRestartQuiz}>Yeniden Başlat</button>  
         </div>
       ) : (
         <div>
