@@ -173,12 +173,13 @@ function App() {
           <div className="result-section">
               <p>{resultMessage}</p>
             </div>
-          <div className="current-question">Şu anki Soru: {currentQuestion + 1}</div>
+          
           <button onClick={handleRestartQuiz}>Yeniden Başlat</button>  
         </div>
       ) : (
         <div>
           <div className="question-section">
+            <div className="current-question">Şu anki Soru: {currentQuestion + 1}</div>
             <div className="question-text">{questions[currentQuestion].question}</div>
             <img
               src={`assets/pictures/${questions[currentQuestion].media}`}
