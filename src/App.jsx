@@ -91,7 +91,7 @@ function App() {
         if (timer > 0) {
           setTimer(timer - 1);
         } else {
-          handleAnswerButtonClick(''); // Otomatik olarak bir sonraki soruya geç
+          handleAnswerButtonClick('');
         }
       }, 1000);
     }
@@ -169,7 +169,7 @@ function App() {
           <div className="question-section">
             <div className="question-text">{questions[currentQuestion].question}</div>
             <img
-              src={`src/assets/pictures/${questions[currentQuestion].media}`}
+              src={`public/assets/pictures/${questions[currentQuestion].media}`}
               alt={`Question ${currentQuestion + 1}`}
               className="question-image"
             />
