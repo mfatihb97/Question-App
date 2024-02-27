@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './new.css';
+import './App.css';
 
 const questions = [
   {
