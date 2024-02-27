@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './App.css';
+import './new.css';
 
 const questions = [
   {
@@ -82,6 +82,7 @@ function App() {
   const [timer, setTimer] = useState(30);
   const [optionsDisplayed, setOptionsDisplayed] = useState(false);
   const [resultMessage, setResultMessage] = useState("");
+  const [userAnswers, setUserAnswers] = useState(Array(questions.length).fill(''));
 
   useEffect(() => {
     let interval;
@@ -105,7 +106,7 @@ function App() {
 
       const optionsDisplayTimeout = setTimeout(() => {
         setOptionsDisplayed(true);
-      },10000) 
+      },1000) 
 
       return () => clearTimeout(optionsDisplayTimeout);
     }
@@ -134,6 +135,12 @@ function App() {
   const handleAnswerButtonClick = (selectedAnswer) => {
     if (selectedAnswer === questions[currentQuestion].answer) {
       setScore(score + 1);
+
+      setUserAnswers(prevUserAnswers => {
+        const newUserAnswers = [...prevUserAnswers];
+        newUserAnswers[currentQuestion] = selectedAnswer;
+        return newUserAnswers;
+      });
     }
 
     setTimer(30); 
@@ -157,6 +164,8 @@ function App() {
     setResultMessage("");
   };
 
+  
+
   return (
     <div className="app">
       {!quizStarted ? (
@@ -173,7 +182,22 @@ function App() {
           <div className="result-section">
               <p>{resultMessage}</p>
             </div>
-          
+        <div className="answers-section">
+          <h3>Verilen Cevaplar:</h3>
+          <ul>
+            {questions.map((question, index) => (
+              <li key={index}>
+                <strong>{index + 1}.</strong> {question.question}
+                <div>
+                  <strong>Verilen Cevap:</strong> {question.options.find(option => option === userAnswers[index]) || "Cevap verilmedi"}
+                </div>
+                <div>
+                  <strong>Doğru Cevap:</strong> {question.answer}
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
           <button onClick={handleRestartQuiz}>Yeniden Başlat</button>  
         </div>
       ) : (
