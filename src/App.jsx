@@ -106,7 +106,7 @@ function App() {
 
       const optionsDisplayTimeout = setTimeout(() => {
         setOptionsDisplayed(true);
-      },1000) 
+      },10000) 
 
       return () => clearTimeout(optionsDisplayTimeout);
     }
