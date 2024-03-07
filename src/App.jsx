@@ -79,7 +79,7 @@ function App() {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [score, setScore] = useState(0);
   const [showScore, setShowScore] = useState(false);
-  const [timer, setTimer] = useState(30);
+  const [timer, setTimer] = useState(20);
   const [optionsDisplayed, setOptionsDisplayed] = useState(false);
   const [resultMessage, setResultMessage] = useState("");
   const [userAnswers, setUserAnswers] = useState(Array(questions.length).fill(''));
@@ -106,7 +106,7 @@ function App() {
 
       const optionsDisplayTimeout = setTimeout(() => {
         setOptionsDisplayed(true);
-      },10000) 
+      },2000) 
 
       return () => clearTimeout(optionsDisplayTimeout);
     }
@@ -143,7 +143,7 @@ function App() {
       });
     }
 
-    setTimer(30); 
+    setTimer(20); 
 
     const nextQuestion = currentQuestion + 1;
 
@@ -159,7 +159,7 @@ function App() {
     setCurrentQuestion(0);
     setScore(0);
     setShowScore(false);
-    setTimer(30);
+    setTimer(20);
     setOptionsDisplayed(false);
     setResultMessage("");
   };
